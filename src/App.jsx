@@ -1,24 +1,21 @@
 import React from 'react'
-import reactLogo from './assets/react.svg'
 import './App.css'
 import TableComponent from './TableComponent'
 import FormComponent from './FormComponent'
 
+
+
 function App() {
-  const [masterData,setMasterData] = React.useState(  //row
-    [
-      {
-        serial:1,
-        name:"Prakhar Tandon",
-        contact:"9044597953"
-      },
-      {
-        serial:2,
-        name:"Gautam Adani",
-        contact:"9999996969"
-      },
-    ]
-  )
+
+  const jsonData =[
+    {
+      serial:1,
+      name:"Prakhar Tandon",
+      contact:"9044597953"
+    },
+  ];
+
+  const [masterData,setMasterData] = React.useState(jsonData)
 
   const data = React.useMemo(()=>[...masterData],[masterData])
   const columns = React.useMemo(()=>[
@@ -34,12 +31,13 @@ function App() {
         Header:"Mobile Number",
         accessor:"contact"
       },
-    ],[])
+    ],[masterData])
+
 
   return (
     <div className="App">
       <FormComponent masterData={masterData} setMasterData={setMasterData}/>
-      <TableComponent data={data} columns={columns} />
+      <TableComponent masterData={masterData} setMasterData={setMasterData} data={data} columns={columns} />
     </div>
   )
 }

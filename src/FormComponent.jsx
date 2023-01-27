@@ -2,15 +2,19 @@ import React from 'react'
 import './Form.css'
 
 const FormComponent = ({masterData,setMasterData}) => {
+
+    const [name,setName] = React.useState("default name");
+    const [contact,setContact] = React.useState("default contact");
+
     const handleFormSubmit = (e)=>{
         e.preventDefault();
         console.log(e.target?.name.value)
         console.log(e.target?.contact.value)
 
         let formData = {
-            serial: masterData.at(-1).serial + 1,
-            name:e.target?.name.value,
-            contact:e.target?.name.value,
+            serial: masterData.at(-1) ? masterData.at(-1).serial + 1 : 1,
+            name:name,
+            contact:contact,
         }
 
         setMasterData(
@@ -23,9 +27,9 @@ const FormComponent = ({masterData,setMasterData}) => {
     <div>
         <form onSubmit={handleFormSubmit}>
             <label>Name:</label>
-            <input type="text" id="name" name="name" />
+            <input placeholder="default name" onChange={(e)=>setName(e.target.value)} type="text" id="name" name="name" />
             <label>Contact:</label>
-            <input type="text" id="contact" name="contact" />
+            <input placeholder="default contact" onChange={(e)=>setContact(e.target.value)} type="text" id="contact" name="contact" />
             <input type="submit" value="Save" className='btn' />
         </form>
     </div>

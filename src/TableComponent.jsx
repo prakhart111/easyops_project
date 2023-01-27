@@ -1,11 +1,30 @@
 import React from 'react'
 import { useTable } from 'react-table'
 import './Table.css'
+import { deleteRow } from './tableFunctions'
 
-const TableComponent = ({data,columns}) => {
+const TableComponent = ({masterData,data,setMasterData,columns}) => {
 
-  const tableInstance = useTable({columns,data});
-  
+  const tableHooks = (hooks)=>{
+    hooks.visibleColumns.push(cols=>[
+      ...cols,
+      {
+        id:"Delete",
+        Header:"Delete",
+        Cell:( {row} )=>(
+          <button onClick={()=>{
+
+            alert(`Deleted Row : ${row.values?.name}`)
+            let nameToDelete = row.values?.name;
+            deleteRow(masterData,setMasterData,nameToDelete)
+            
+          }}>Delete</button>
+        )
+      }
+    ])
+  }
+
+  const tableInstance = useTable({columns,data},tableHooks);
   const {
     getTableProps,
     getTableBodyProps,
@@ -13,6 +32,7 @@ const TableComponent = ({data,columns}) => {
     rows,
     prepareRow,
   } = tableInstance;
+
 
   return (
     <div>
