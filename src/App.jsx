@@ -5,24 +5,23 @@ import TableComponent from './TableComponent'
 import FormComponent from './FormComponent'
 
 function App() {
-  const [formData,setFormData] = React.useState([])
-  const data = React.useMemo(()=>(
+  const [masterData,setMasterData] = React.useState(  //row
     [
       {
-        serial:"1",
+        serial:1,
         name:"Prakhar Tandon",
         contact:"9044597953"
       },
       {
-        serial:"2",
+        serial:2,
         name:"Gautam Adani",
         contact:"9999996969"
       },
     ]
-  ),[])
+  )
 
-  const columns = React.useMemo(()=>(
-    [
+  const data = React.useMemo(()=>[...masterData],[masterData])
+  const columns = React.useMemo(()=>[
       {
         Header:"S.No.",
         accessor:"serial"
@@ -35,12 +34,11 @@ function App() {
         Header:"Mobile Number",
         accessor:"contact"
       },
-    ]
-  ),[])
+    ],[])
 
   return (
     <div className="App">
-      <FormComponent setFormData={setFormData}/>
+      <FormComponent masterData={masterData} setMasterData={setMasterData}/>
       <TableComponent data={data} columns={columns} />
     </div>
   )
