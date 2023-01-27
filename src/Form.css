@@ -1,0 +1,21 @@
+input{
+    padding:10px;
+    margin:10px;
+    margin-bottom: 20px;
+}
+form{
+    display:flex;
+    flex-direction: column;
+    margin:20px;
+    color:white;
+}
+label{
+    align-self: flex-start;
+}
+.btn{
+    background-color:rgb(65, 255, 192);
+    color:black;
+    font-weight: 700;
+    border-radius: 10px;
+    outline:none;
+}

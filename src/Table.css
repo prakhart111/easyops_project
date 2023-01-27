@@ -1,0 +1,11 @@
+*{
+    padding:5px;
+}
+td{
+    border: 1px solid rgb(181, 251, 255);
+}
+th{
+    background-color: rgb(181, 251, 255);
+    color:black;
+    min-width: 150px;
+}
