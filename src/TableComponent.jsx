@@ -2,6 +2,7 @@ import React from 'react'
 import { useTable } from 'react-table'
 import './Table.css'
 import { deleteRow } from './tableFunctions'
+import trashIcon from "./assets/trash.png"
 
 const TableComponent = ({masterData,data,setMasterData,columns}) => {
 
@@ -12,13 +13,15 @@ const TableComponent = ({masterData,data,setMasterData,columns}) => {
         id:"Delete",
         Header:"Delete",
         Cell:( {row} )=>(
-          <button onClick={()=>{
+          <span onClick={()=>{
 
             alert(`Deleted Row : ${row.values?.name}`)
             let nameToDelete = row.values?.name;
             deleteRow(masterData,setMasterData,nameToDelete)
             
-          }}>Delete</button>
+          }}>
+            <img src={trashIcon} width="15%"/>
+          </span>
         )
       }
     ])

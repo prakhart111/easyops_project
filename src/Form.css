@@ -8,6 +8,10 @@ form{
     flex-direction: column;
     margin:20px;
     color:white;
+    max-width: 70%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 0;
 }
 label{
     align-self: flex-start;
@@ -18,4 +22,15 @@ label{
     font-weight: 700;
     border-radius: 10px;
     outline:none;
+}
+.name-cont{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+    padding:0;
+}
+.name-cont>input{
+    width:50%;
 }

@@ -3,8 +3,6 @@ import './App.css'
 import TableComponent from './TableComponent'
 import FormComponent from './FormComponent'
 
-
-
 function App() {
 
   const jsonData =[
