@@ -8,3 +8,16 @@ export const deleteRow = (masterData,setMasterData,nameToDelete)=>{
     )
     setMasterData(copy)
 }
+
+export const searchRow = (masterData,nameToSearch,loading,setLoading)=>{
+    setLoading(true);
+    let result = [...masterData]
+    result = result.filter(
+        (item)=>{
+            return item.name.toLowerCase().includes(nameToSearch.toLowerCase())
+        }
+    )
+    if(result.length==0) alert("No results found")
+    setLoading(false)
+    return result;
+}

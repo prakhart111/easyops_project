@@ -3,6 +3,8 @@ import './App.css'
 import TableComponent from './TableComponent'
 import FormComponent from './FormComponent'
 import {autofillData} from "./autofillData"
+import SearchBar from './SearchBar'
+
 
 function App() {
 
@@ -38,6 +40,8 @@ function App() {
       <button className="btn autofill" onClick={()=>{
         setMasterData(autofillData)
         }}>AutoFill Table</button>
+
+      <SearchBar masterData={masterData} />
       <FormComponent masterData={masterData} setMasterData={setMasterData}/>
       <TableComponent masterData={masterData} setMasterData={setMasterData} data={data} columns={columns} />
     </div>

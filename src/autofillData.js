@@ -7,22 +7,22 @@ export const autofillData = [
     {
         serial:2,
         name:"Narendra Modi",
-        contact:"123"
+        contact:"1231231239"
     },
     {
         serial:3,
         name:"Ambani",
-        contact:"912"
+        contact:"9129129129"
     },
     {
         serial:4,
         name:"Adani",
-        contact:"234"
+        contact:"2342342341"
     },
     {
         serial:5,
         name:"Zuckerburg",
-        contact:"000"
+        contact:"0000000009"
     },
 
 ]
