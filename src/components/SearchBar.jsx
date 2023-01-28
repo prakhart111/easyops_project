@@ -1,6 +1,6 @@
 import React from 'react'
 import { searchRow } from './tableFunctions'
-import "./search.css"
+import "../assets/styles/search.css"
 
 const SearchBar = ({masterData}) => {
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Form.css'
+import '../assets/styles/Form.css'
 import {checkDuplicacy} from "./tableFunctions" 
 
 const FormComponent = ({masterData,setMasterData}) => {

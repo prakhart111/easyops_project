@@ -1,8 +1,8 @@
 import React from 'react'
 import { useTable,useSortBy } from 'react-table'
-import './Table.css'
+import '../assets/styles/Table.css'
 import { deleteRow } from './tableFunctions'
-import trashIcon from "./assets/trash.png"
+import trashIcon from "../assets/trash.png"
 
 const TableComponent = ({masterData,data,setMasterData,columns}) => {
 

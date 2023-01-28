@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import TableComponent from './TableComponent'
-import FormComponent from './FormComponent'
+import TableComponent from './components/TableComponent'
+import FormComponent from './components/FormComponent'
 import {autofillData} from "./autofillData"
-import SearchBar from './SearchBar'
+import SearchBar from './components/SearchBar'
 
 
 function App() {
