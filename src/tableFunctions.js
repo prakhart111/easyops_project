@@ -21,3 +21,15 @@ export const searchRow = (masterData,nameToSearch,loading,setLoading)=>{
     setLoading(false)
     return result;
 }
+
+export const checkDuplicacy = (formData,masterData)=>{
+    if(masterData.length==0) return true;
+    let res = true;
+
+    masterData.forEach( (item)=>{
+        if(res && (item.name == formData.name || item.contact == formData.contact) )
+            res = false;
+    })
+    
+    return res;
+}   

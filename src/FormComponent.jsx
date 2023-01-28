@@ -1,14 +1,21 @@
 import React from 'react'
 import './Form.css'
+import {checkDuplicacy} from "./tableFunctions" 
 
 const FormComponent = ({masterData,setMasterData}) => {
 
-    const [Fname,setFirstName] = React.useState("Fname");
-    const [Lname,setLastName] = React.useState("Lname");
-    const [contact,setContact] = React.useState("default contact");
+    const [Fname,setFirstName] = React.useState(null);
+    const [Lname,setLastName] = React.useState(null);
+    const [contact,setContact] = React.useState(null);
 
     const handleFormSubmit = (e)=>{
         e.preventDefault();
+
+        if(!Fname || !Lname || !contact){
+            alert("Enter valid values")
+            return;
+        }
+
         console.log(e.target?.Fname.value + e.target?.Lname.value)
         console.log(e.target?.contact.value)
 
@@ -18,22 +25,29 @@ const FormComponent = ({masterData,setMasterData}) => {
             contact:contact,
         }
 
-        setMasterData(
-            [...masterData,
-                formData
-            ]
-        )
+        //check if given name & contact already exists in the table
+        if(checkDuplicacy(formData,masterData)){ // true means no duplicate
+            setMasterData(
+                [...masterData,
+                    formData
+                ]
+            )
+        }
+        else{
+            alert("Duplicate Values are not allowed")
+        }
+
     }
   return (
     <div>
         <form onSubmit={handleFormSubmit}>
         <label>Name:</label>
             <div className='name-cont'>
-                <input placeholder="Fname" onChange={(e)=>setFirstName(e.target.value)} type="text" id="Fname" name="Fname" required/>
-                <input placeholder="Lname" onChange={(e)=>setLastName(e.target.value)} type="text" id="Lname" name="Lname" required/>
+                <input placeholder="First Name" onChange={(e)=>setFirstName(e.target.value.trim())} type="text" id="Fname" name="Fname" required/>
+                <input placeholder="Last Name" onChange={(e)=>setLastName(e.target.value.trim())} type="text" id="Lname" name="Lname" required/>
             </div>
             <label>Contact:</label>
-            <input placeholder="default contact" onChange={(e)=>setContact(e.target.value)} type="text" id="contact" name="contact" required/>
+            <input placeholder="Enter Contact Number" onChange={(e)=>setContact(e.target.value.trim())} type="number" id="contact" name="contact" required/>
             <input type="submit" value="Save" className='btn' />
         </form>
     </div>
