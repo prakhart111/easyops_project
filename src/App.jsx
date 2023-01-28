@@ -2,6 +2,7 @@ import React from 'react'
 import './App.css'
 import TableComponent from './TableComponent'
 import FormComponent from './FormComponent'
+import {autofillData} from "./autofillData"
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
 
   return (
     <div className="App">
+      <button className="btn autofill" onClick={()=>{
+        setMasterData(autofillData)
+        }}>AutoFill Table</button>
       <FormComponent masterData={masterData} setMasterData={setMasterData}/>
       <TableComponent masterData={masterData} setMasterData={setMasterData} data={data} columns={columns} />
     </div>

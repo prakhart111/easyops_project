@@ -9,3 +9,10 @@ th{
     color:black;
     min-width: 150px;
 }
+th.desc {
+    border-bottom: 5px solid rgb(136, 136, 255);
+  }
+  
+  th.asc {
+    border-top: 5px solid orange;
+  }

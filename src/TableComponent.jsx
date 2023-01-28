@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTable } from 'react-table'
+import { useTable,useSortBy } from 'react-table'
 import './Table.css'
 import { deleteRow } from './tableFunctions'
 import trashIcon from "./assets/trash.png"
@@ -27,7 +27,8 @@ const TableComponent = ({masterData,data,setMasterData,columns}) => {
     ])
   }
 
-  const tableInstance = useTable({columns,data},tableHooks);
+  const tableInstance = useTable({columns,data},tableHooks,useSortBy);
+
   const {
     getTableProps,
     getTableBodyProps,
@@ -45,10 +46,11 @@ const TableComponent = ({masterData,data,setMasterData,columns}) => {
                <tr  {...headerGroup.getHeaderGroupProps()}>
                   {
                     headerGroup.headers.map(col=>(
-                      <th {...col.getHeaderProps()}>
-                        {
-                          col.render('Header')
-                        }
+                      <th {...col.getHeaderProps(col.getSortByToggleProps())}
+                      className="font-bold"
+                      >
+                        {col.render('Header')}
+                        {col.isSorted ? (col.isSortedDesc?" ↓":" ↑") : ""}
                       </th>
                     ))
                   }
